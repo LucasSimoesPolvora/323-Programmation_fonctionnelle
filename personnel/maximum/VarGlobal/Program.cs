@@ -43,11 +43,9 @@ namespace VarGlobal
                 int BobProduction = random.Next(10, 50);
                 Console.WriteLine($"Bob commits {BobProduction} lines of code.");
                 myLineCounter += BobProduction;
-                // Add the lines coded in the global variable
+                linesOfCode += BobProduction;
             }
-            Console.WriteLine($"Bob checks out, he claims the program has now {myLineCounter} lines");
-            // No need to add here
-            linesOfCode = myLineCounter; // he turns his work in
+            Console.WriteLine($"Bob checks out, he claims the program has now {linesOfCode} lines");
         }
 
         // Method to be executed by thread2 - increments by 2 every 3 seconds
@@ -62,11 +60,9 @@ namespace VarGlobal
                 int AliceProduction = random.Next(20, 80);
                 Console.WriteLine($"Alice commits {AliceProduction} lines of code.");
                 myLineCounter += AliceProduction;
-                // Add the lines coded in the global variable
+                linesOfCode += AliceProduction;
             }
-            Console.WriteLine($"Alice checks out, she claims the program has now {myLineCounter} lines");
-            // No need to add here
-            linesOfCode = myLineCounter; // she turns her work in
+            Console.WriteLine($"Alice checks out, she claims the program has now {linesOfCode} lines");
         }
     }
 }
