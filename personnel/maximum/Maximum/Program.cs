@@ -20,7 +20,7 @@ namespace Maximum
             };
 
             // Initialize search
-            Player elder = players.First();
+            /*Player elder = players.First();
             int biggestAge = elder.Age;
 
             // search
@@ -31,7 +31,11 @@ namespace Maximum
                     elder = p;
                     biggestAge = p.Age; // for future loops
                 }
-            }
+            }*/
+
+            Player p1 = players[0].Age > players[1].Age ? players[0] : players[1];
+            Player p2 = players[2].Age > players[3].Age ? players[2] : players[3];
+            Player elder = p1.Age > p2.Age ? p1 : p2;
 
             Console.WriteLine($"Le plus agé est {elder.Name} qui a {elder.Age} ans");
 
