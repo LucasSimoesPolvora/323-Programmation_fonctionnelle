@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,9 +34,13 @@ namespace Maximum
                 }
             }*/
 
-            Player p1 = players[0].Age > players[1].Age ? players[0] : players[1];
+            // Sans linq
+            /*Player p1 = players[0].Age > players[1].Age ? players[0] : players[1];
             Player p2 = players[2].Age > players[3].Age ? players[2] : players[3];
-            Player elder = p1.Age > p2.Age ? p1 : p2;
+            Player elder = p1.Age > p2.Age ? p1 : p2;*/
+
+            // Avec linq
+            Player elder = players.Aggregate((current, next) => current.Age > next.Age ? current : next);
 
             Console.WriteLine($"Le plus agé est {elder.Name} qui a {elder.Age} ans");
 
