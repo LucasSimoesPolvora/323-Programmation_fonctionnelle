@@ -43,8 +43,10 @@ namespace VarGlobal
                 int BobProduction = random.Next(10, 50);
                 Console.WriteLine($"Bob commits {BobProduction} lines of code.");
                 myLineCounter += BobProduction;
+                // Add the lines coded in the global variable
             }
             Console.WriteLine($"Bob checks out, he claims the program has now {myLineCounter} lines");
+            // No need to add here
             linesOfCode = myLineCounter; // he turns his work in
         }
 
@@ -60,8 +62,10 @@ namespace VarGlobal
                 int AliceProduction = random.Next(20, 80);
                 Console.WriteLine($"Alice commits {AliceProduction} lines of code.");
                 myLineCounter += AliceProduction;
+                // Add the lines coded in the global variable
             }
             Console.WriteLine($"Alice checks out, she claims the program has now {myLineCounter} lines");
+            // No need to add here
             linesOfCode = myLineCounter; // she turns her work in
         }
     }
