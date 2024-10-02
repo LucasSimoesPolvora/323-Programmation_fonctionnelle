@@ -83,6 +83,13 @@ bool isThereAWayOut(int x, int y)
 
 bool result = isThereAWayOut(0,0);
 
-Console.WriteLine(result);
+if (result)
+{
+    DrawBoard(path);
+}
+else
+{
+    Console.WriteLine("No paths were found");
+}
 
 Console.ReadLine();
