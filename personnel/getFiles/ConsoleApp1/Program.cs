@@ -5,21 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
+using static System.Net.WebRequestMethods;
 
 namespace ConsoleApp1
 {
     internal class Program
     {
         static string path = "C:/temp/";
-        static int numberOfFiles = 0;
-        static int numberOfDirectories = 0;
         static void Main(string[] args)
         {
-            ProcessDirectory(path);
+            (int numberOfFiles, int numberOfDirectories) = ProcessDirectory(path, 0, 0);
             Console.WriteLine($"{path} contient {numberOfFiles} fichiers et {numberOfDirectories} dossiers");
             Console.ReadLine();
         }
-        public static int ProcessDirectory(string targetPath)
+        public static (int,int) ProcessDirectory(string targetPath, int numberOfFiles, int numberOfDirectories)
         {
             // searches the current directory
             numberOfFiles += Directory.GetFiles(targetPath, "*", SearchOption.TopDirectoryOnly).Length;
@@ -27,9 +26,11 @@ namespace ConsoleApp1
             numberOfDirectories += s.Length;
             foreach(string s2 in s)
             {
-                ProcessDirectory(s2);
+                (int Files, int Directories) = ProcessDirectory(s2,numberOfFiles, numberOfDirectories);
+                numberOfFiles += Files - numberOfFiles;
+                numberOfDirectories += Directories - numberOfDirectories;
             }
-            return numberOfFiles;
+            return (numberOfFiles, numberOfDirectories);
         }
     }
 }
