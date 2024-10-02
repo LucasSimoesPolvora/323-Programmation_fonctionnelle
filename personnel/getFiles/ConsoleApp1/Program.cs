@@ -12,10 +12,11 @@ namespace ConsoleApp1
     {
         static string path = "C:/temp/";
         static int numberOfFiles = 0;
+        static int numberOfDirectories = 0;
         static void Main(string[] args)
         {
             ProcessDirectory(path);
-            Console.WriteLine($"{path} contient {numberOfFiles} fichiers");
+            Console.WriteLine($"{path} contient {numberOfFiles} fichiers et {numberOfDirectories} dossiers");
             Console.ReadLine();
         }
         public static int ProcessDirectory(string targetPath)
@@ -23,6 +24,7 @@ namespace ConsoleApp1
             // searches the current directory
             numberOfFiles += Directory.GetFiles(targetPath, "*", SearchOption.TopDirectoryOnly).Length;
             string[] s = Directory.GetDirectories(targetPath);
+            numberOfDirectories += s.Length;
             foreach(string s2 in s)
             {
                 ProcessDirectory(s2);
